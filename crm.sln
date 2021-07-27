@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "crm", "crm\crm.csproj", "{EBB2EDC3-2A60-4501-AEC7-1EEA2141E956}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "crm", "crm\crm.csproj", "{EBB2EDC3-2A60-4501-AEC7-1EEA2141E956}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "crm.DataAccess", "crm.DataAccess\crm.DataAccess.csproj", "{9D6995BD-89D1-4AC1-B94A-8982A37F36F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{EBB2EDC3-2A60-4501-AEC7-1EEA2141E956}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBB2EDC3-2A60-4501-AEC7-1EEA2141E956}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBB2EDC3-2A60-4501-AEC7-1EEA2141E956}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D6995BD-89D1-4AC1-B94A-8982A37F36F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D6995BD-89D1-4AC1-B94A-8982A37F36F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D6995BD-89D1-4AC1-B94A-8982A37F36F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D6995BD-89D1-4AC1-B94A-8982A37F36F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
