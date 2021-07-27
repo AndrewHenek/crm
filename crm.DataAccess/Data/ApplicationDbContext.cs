@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using crm.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace crm.DataAccess.Data
 {
@@ -8,5 +9,7 @@ namespace crm.DataAccess.Data
             : base(options)
         {
         }
+
+        public DbSet<Currency> Currencies { get; set; }
     }
 }
