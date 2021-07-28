@@ -50,7 +50,7 @@ namespace crm
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Currencies}/{action=Index}/{id?}");
             });
         }
     }
