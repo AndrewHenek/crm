@@ -47,10 +47,18 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Rate)
+                @if (item.Rate.HasValue)
+                {
+                    @Html.DisplayFor(modelItem => item.Rate)
+                }
+                else
+                {
+                    @:-
+                }
             </td>
             <td>
-                @if (item.IsSync) {
+                @if (item.IsSync)
+                {
                     <span class="rounded-pill bg-success px-3">Yes</span>
                 }
                 else
