@@ -7,8 +7,8 @@
 
 <h1>Currencies</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
+<p class="my-4">
+    <a asp-action="Create" class="rounded-pill bg-primary py-1 px-3 text-white">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -23,20 +23,23 @@
                 @Html.DisplayNameFor(model => model.Rate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsSync)
+                Is sync
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreatedAt)
+                Creation date
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UpdatedAt)
+                Modification date
+            </th>
+            <th>
+                Archive
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+        <tr class="@(item.Ghosted ? "table-dark text-dark" : string.Empty)">
             <td>
                 @Html.DisplayFor(modelItem => item.Symbol)
             </td>
@@ -47,7 +50,13 @@
                 @Html.DisplayFor(modelItem => item.Rate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsSync)
+                @if (item.IsSync) {
+                    <span class="rounded-pill bg-success px-3">Yes</span>
+                }
+                else
+                {
+                    <span class="rounded-pill bg-warning px-3">No</span>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CreatedAt)
@@ -56,8 +65,21 @@
                 @Html.DisplayFor(modelItem => item.UpdatedAt)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                @if (item.Ghosted)
+                {
+                    <span class="rounded-pill bg-dark text-white px-3">Yes</span>
+                }
+                else
+                {
+                    <span class="rounded-pill bg-light px-3">No</span>
+                }
+            </td>
+            <td>
+                @if (!item.Ghosted)
+                {
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="rounded-pill bg-primary py-1 px-3 text-white mr-1">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="rounded-pill bg-danger py-1 px-3 text-white">Delete</a>
+                }
             </td>
         </tr>
 }
