@@ -59,7 +59,7 @@ namespace crm.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Symbol,Name,IsSync")] Currency currency)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,IsSync")] Currency currency)
         {
             if (id != currency.Id)
             {
@@ -76,7 +76,6 @@ namespace crm.Controllers
             {
                 try
                 {
-                    currencyFromDb.Symbol = currency.Symbol;
                     currencyFromDb.Name = currency.Name;
                     currencyFromDb.IsSync = currency.IsSync;
                     currencyFromDb.UpdatedAt = DateTime.Now;
