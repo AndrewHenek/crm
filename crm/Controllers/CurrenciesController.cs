@@ -59,7 +59,7 @@ namespace crm.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,IsSync")] Currency currency)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Symbol,Name,IsSync")] Currency currency)
         {
             if (id != currency.Id)
             {
@@ -148,10 +148,18 @@ namespace crm.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> SymbolIsUnique(string symbol)
+        public async Task<IActionResult> SymbolIsUnique(string symbol, int id)
         {
+            bool currencyExists = await _context.Currencies.AnyAsync(currency => currency.Id == id);
+
+            if (currencyExists)
+            {
+                return Content(true.ToString().ToLower());
+            }
+
             bool symbolExists = await _context.Currencies.AnyAsync(currency => currency.Symbol.ToLower() == symbol.ToLower());
             bool symbolIsUnique = !symbolExists;
+            
             return Content(symbolIsUnique.ToString().ToLower());
         }
 

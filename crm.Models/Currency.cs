@@ -11,7 +11,7 @@ namespace crm.Models
 
         [Required]
         [MaxLength(3)]
-        [Remote("SymbolIsUnique", "Currencies", ErrorMessage = "Symbol already exists.")]
+        [Remote("SymbolIsUnique", "Currencies", ErrorMessage = "Symbol already exists.", AdditionalFields = nameof(Id))]
         public string Symbol { get; set; }
 
         [Required]
