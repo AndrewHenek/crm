@@ -148,6 +148,13 @@ namespace crm.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> SymbolIsUnique(string symbol)
+        {
+            bool symbolExists = await _context.Currencies.AnyAsync(currency => currency.Symbol.ToLower() == symbol.ToLower());
+            bool symbolIsUnique = !symbolExists;
+            return Content(symbolIsUnique.ToString().ToLower());
+        }
+
         private bool CurrencyExists(int id)
         {
             return _context.Currencies.Any(e => e.Id == id);

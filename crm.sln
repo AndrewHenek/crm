@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "crm", "crm\crm.csproj", "{EBB2EDC3-2A60-4501-AEC7-1EEA2141E956}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "crm.DataAccess", "crm.DataAccess\crm.DataAccess.csproj", "{9D6995BD-89D1-4AC1-B94A-8982A37F36F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "crm.DataAccess", "crm.DataAccess\crm.DataAccess.csproj", "{9D6995BD-89D1-4AC1-B94A-8982A37F36F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "crm.Models", "crm.Models\crm.Models.csproj", "{25679237-5B3E-45BB-9BC4-324D5643BD4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "crm.Models", "crm.Models\crm.Models.csproj", "{25679237-5B3E-45BB-9BC4-324D5643BD4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

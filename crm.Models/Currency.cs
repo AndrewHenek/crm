@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 
 namespace crm.Models
 {
@@ -8,8 +9,13 @@ namespace crm.Models
         [Key]
         public int Id { get; set; }
 
+        [Required]
+        [MaxLength(3)]
+        [Remote("SymbolIsUnique", "Currencies", ErrorMessage = "Symbol already exists.")]
         public string Symbol { get; set; }
 
+        [Required]
+        [MaxLength(255)]
         public string Name { get; set; }
 
         public double? Rate { get; set; }
