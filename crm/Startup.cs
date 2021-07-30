@@ -1,4 +1,9 @@
+using AutoMapper;
+using crm.API.Authorization;
+using crm.API.Mapping;
 using crm.DataAccess.Data;
+using crm.Middleware;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -20,10 +25,21 @@ namespace crm
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IAuthorizationHandler, TokenHandler>();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Token", policy =>
+                    policy.Requirements.Add(new TokenRequirement()));
+            });
             services.AddDbContext<ApplicationDbContext>(options => 
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
+            services.AddScoped<ErrorHandlingMiddleware>();
+
+            var mappingConfig = new MapperConfiguration(mc => mc.AddProfile(new MappingProfile()));
+            var mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +55,8 @@ namespace crm
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseMiddleware<ErrorHandlingMiddleware>();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
