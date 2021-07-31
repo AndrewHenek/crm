@@ -17,9 +17,29 @@ namespace crm.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string currencySearch = null, string currencySort = null, bool descendingSort = false)
         {
-            return View(await _context.Currencies.ToListAsync());
+            ViewData["DescendingSort"] = descendingSort;
+            ViewData["SearchCurrency"] = currencySearch;
+            ViewData["SortCurrency"] = currencySort;
+
+            var currencies = _context.Currencies.Select(currency => currency);
+
+            if (!string.IsNullOrEmpty(currencySearch))
+            {
+                currencies = currencies.Where(currency => 
+                    currency.Name.ToLower().Contains(currencySearch.ToLower()) ||
+                    currency.Symbol.ToLower().Contains(currencySearch.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(currencySort))
+            {
+                currencies = descendingSort 
+                    ? currencies.OrderByDescending(currency => EF.Property<object>(currency, currencySort)) 
+                    : currencies.OrderBy(currency => EF.Property<object>(currency, currencySort));
+            }
+
+            return View(await currencies.ToListAsync());
         }
 
         public IActionResult Create()

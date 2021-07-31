@@ -20,12 +20,16 @@ namespace crm.Models
 
         public double? Rate { get; set; }
 
+        [Display(Name = "Is sync")]
         public bool IsSync { get; set; }
 
+        [Display(Name = "Creation date")]
         public DateTime CreatedAt { get; set; }
 
+        [Display(Name = "Modification date")]
         public DateTime UpdatedAt { get; set; }
 
+        [Display(Name = "Archive")]
         public bool Ghosted { get; set; }
     }
 }

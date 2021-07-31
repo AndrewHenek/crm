@@ -1,4 +1,5 @@
-﻿@model IEnumerable<crm.Models.Currency>
+﻿@using crm.Models
+@model IEnumerable<Currency>
 
 @{
     ViewData["Title"] = "Currencies";
@@ -7,32 +8,73 @@
 
 <h1>Currencies</h1>
 
-<p class="my-4">
-    <a asp-action="Create" class="btn btn-primary">Create New</a>
-</p>
+<form method="get" asp-action="Index">
+    <div class="my-4 d-flex flex-row justify-content-between">
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+        <div class="input-group w-auto">
+            <input type="search" name="currencySearch" value="@ViewData["SearchCurrency"]" placeholder="Search currency by symbol or name" class="form-control" style="width: 300px;" />
+            <input type="hidden" name="currencySort" value="@ViewData["SortCurrency"]" />
+            <input type="hidden" name="descendingSort" value="@(ViewData["DescendingSort"]?.ToString()?.ToLower() ?? "false")" />
+            <div class="input-group-append">
+                <input type="submit" value="Search" class="btn btn-secondary mr-1" style="border-start-end-radius: 0.25em; border-end-end-radius: 0.25em;" />
+            </div>
+            <a asp-action="Index" class="btn btn-secondary">Reset filters</a>
+        </div>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Symbol)
+                <a asp-action="Index"
+                   asp-route-currencySort="@nameof(Currency.Symbol)"
+                   asp-route-currencySearch="@ViewData["SearchCurrency"]"
+                   asp-route-descendingSort="@((ViewData["SortCurrency"]?.ToString() == nameof(Currency.Symbol) && !bool.Parse(ViewData["DescendingSort"]?.ToString() ?? string.Empty)).ToString().ToLower())"
+                >@Html.DisplayNameFor(model => model.Symbol)</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                <a 
+                    asp-action="Index" 
+                    asp-route-currencySort="@nameof(Currency.Name)"
+                    asp-route-currencySearch="@ViewData["SearchCurrency"]"
+                    asp-route-descendingSort="@((ViewData["SortCurrency"]?.ToString() == nameof(Currency.Name) && !bool.Parse(ViewData["DescendingSort"]?.ToString() ?? string.Empty)).ToString().ToLower())"
+                >@Html.DisplayNameFor(model => model.Name)</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Rate)
+                <a asp-action="Index"
+                   asp-route-currencySort="@nameof(Currency.Rate)"
+                   asp-route-currencySearch="@ViewData["SearchCurrency"]"
+                   asp-route-descendingSort="@((ViewData["SortCurrency"]?.ToString() == nameof(Currency.Rate) && !bool.Parse(ViewData["DescendingSort"]?.ToString() ?? string.Empty)).ToString().ToLower())"
+                >@Html.DisplayNameFor(model => model.Rate)</a>
             </th>
             <th>
-                Is sync
+                <a asp-action="Index"
+                   asp-route-currencySort="@nameof(Currency.IsSync)"
+                   asp-route-currencySearch="@ViewData["SearchCurrency"]"
+                   asp-route-descendingSort="@((ViewData["SortCurrency"]?.ToString() == nameof(Currency.IsSync) && !bool.Parse(ViewData["DescendingSort"]?.ToString() ?? string.Empty)).ToString().ToLower())"
+                >@Html.DisplayNameFor(model => model.IsSync)</a>
             </th>
             <th>
-                Creation date
+                <a asp-action="Index"
+                   asp-route-currencySort="@nameof(Currency.CreatedAt)"
+                   asp-route-currencySearch="@ViewData["SearchCurrency"]"
+                   asp-route-descendingSort="@((ViewData["SortCurrency"]?.ToString() == nameof(Currency.CreatedAt) && !bool.Parse(ViewData["DescendingSort"]?.ToString() ?? string.Empty)).ToString().ToLower())"
+                >@Html.DisplayNameFor(model => model.CreatedAt)</a>
             </th>
             <th>
-                Modification date
+                <a asp-action="Index"
+                   asp-route-currencySort="@nameof(Currency.UpdatedAt)"
+                   asp-route-currencySearch="@ViewData["SearchCurrency"]"
+                   asp-route-descendingSort="@((ViewData["SortCurrency"]?.ToString() == nameof(Currency.UpdatedAt) && !bool.Parse(ViewData["DescendingSort"]?.ToString() ?? string.Empty)).ToString().ToLower())"
+                >@Html.DisplayNameFor(model => model.UpdatedAt)</a>
             </th>
             <th>
-                Archive
+                <a asp-action="Index"
+                   asp-route-currencySort="@nameof(Currency.Ghosted)"
+                   asp-route-currencySearch="@ViewData["SearchCurrency"]"
+                   asp-route-descendingSort="@((ViewData["SortCurrency"]?.ToString() == nameof(Currency.Ghosted) && !bool.Parse(ViewData["DescendingSort"]?.ToString() ?? string.Empty)).ToString().ToLower())"
+                >@Html.DisplayNameFor(model => model.Ghosted)</a>
             </th>
             <th></th>
         </tr>

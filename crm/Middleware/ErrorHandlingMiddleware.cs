@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using crm.API.Exceptions;
 using Microsoft.AspNetCore.Http;
@@ -18,7 +19,7 @@ namespace crm.Middleware
                 context.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
                 await context.Response.WriteAsync(unauthorizedException.Message);
             }
-            catch
+            catch (Exception e)
             {
                 context.Response.StatusCode = 500;
                 await context.Response.WriteAsync("Something went wrong");
