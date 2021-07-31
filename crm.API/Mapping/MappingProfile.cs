@@ -10,7 +10,7 @@ namespace crm.API.Mapping
         public MappingProfile()
         {
             CreateMap<Currency, CurrencyDto>()
-                .ForMember(dest => dest.Updated_at, opt => opt.MapFrom(src => src.UpdatedAt));
+                .ForMember(dest => dest.Updated_at, opt => opt.MapFrom(src => src.UpdatedAt.ToString("yyyy-MM-dd HH:mm:ss")));
 
             CreateMap<List<Currency>, CurrenciesDto>()
                 .ForMember(dest => dest.Currencies, opt => opt.MapFrom(src => src));

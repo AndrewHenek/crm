@@ -27,6 +27,6 @@ namespace crm.API.Mapping.Dtos
         /// <summary>
         /// Date of currency update 
         /// </summary>
-        public DateTime Updated_at { get; set; }
+        public string Updated_at { get; set; }
     }
 }
