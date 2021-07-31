@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "crm.DataAccess", "crm.DataA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "crm.Models", "crm.Models\crm.Models.csproj", "{25679237-5B3E-45BB-9BC4-324D5643BD4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "crm.API", "crm.API\crm.API.csproj", "{09C34F16-80BC-4EAD-9F99-8C9F8F65FCF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "crm.API", "crm.API\crm.API.csproj", "{09C34F16-80BC-4EAD-9F99-8C9F8F65FCF6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "crm.Synchronization", "crm.Synchronization\crm.Synchronization.csproj", "{0D4892E1-4C7F-4B2E-8A86-6D962053B429}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "crm.Logic", "crm.Logic\crm.Logic.csproj", "{A03611DD-C34B-4F16-9083-C0CE3E94CD9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{09C34F16-80BC-4EAD-9F99-8C9F8F65FCF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09C34F16-80BC-4EAD-9F99-8C9F8F65FCF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09C34F16-80BC-4EAD-9F99-8C9F8F65FCF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D4892E1-4C7F-4B2E-8A86-6D962053B429}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D4892E1-4C7F-4B2E-8A86-6D962053B429}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D4892E1-4C7F-4B2E-8A86-6D962053B429}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D4892E1-4C7F-4B2E-8A86-6D962053B429}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A03611DD-C34B-4F16-9083-C0CE3E94CD9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A03611DD-C34B-4F16-9083-C0CE3E94CD9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A03611DD-C34B-4F16-9083-C0CE3E94CD9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A03611DD-C34B-4F16-9083-C0CE3E94CD9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
